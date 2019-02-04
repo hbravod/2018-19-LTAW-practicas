@@ -15,7 +15,7 @@ http.createServer(function (req,res) {
      }
      if (req.url.split('.')[1] == 'css'){
        res.writeHead(200,{ 'Content-Type': 'text/css' });
-       // data = path.join(_dirname, req.url);
+       // data = path.join(_dirname, req.url)
        res.write(data);
        return res.end();
      }
