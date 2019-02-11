@@ -1,23 +1,63 @@
 const http = require('http');
+const url = require('url');
 const fs = require('fs');
-const path = require('path');
 
 console.log("Arrancando servidor...")
 
+//-- Configurar y lanzar el servidor. Por cada peticion recibida
+//-- se imprime un mensaje en la consola
+http.createServer((req, res) => {
+  console.log("---> Peticion recibida")
+  console.log("Recurso solicitado (URL): " + req.url)
+  var q = url.parse(req.url, true);
+  console.log("URL parseada: ")
+  console.log("Host: " + q.host)
+  console.log("pathname:" + q.pathname)
 
-http.createServer(function (req,res) {
-  fs.readFile('CV.html', 'utf8', function (err, data) {
-    console.log(req.url);
-     if (req.url == '/') {
-       res.writeHead(200,{ 'Content-Type': 'text/html' });
-       res.write(data);
-       return res.end();
-     }
-     if (req.url.split('.')[1] == 'css'){
-       res.writeHead(200,{ 'Content-Type': 'text/css' });
-       // data = path.join(_dirname, req.url)
-       res.write(data);
-       return res.end();
-     }
+  //-- Obtener el fichero. Si es "/" se toma index.html
+  //-- Poner el "." delante para que sean un fichero del directorio actual
+
+  var filename = ""
+
+  if (q.pathname == "/")
+    filename += "/CV.html"
+  else {
+    filename = q.pathname
+  }
+
+  //-- Obtener el tipo de fichero segun la extension
+  tipo = filename.split(".")[1]
+
+  //-- Obtener el nombre del fichero a partir del recurso solicitado
+  //-- Se añade un . delante
+  filename = "." + filename
+
+  console.log("Filename: " + filename)
+  console.log("Tipo: " + tipo)
+
+  fs.readFile(filename, function(err, data) {
+    if (err) {
+      res.writeHead(404, {'Content-Type': 'text/html'});
+      return res.end("404 Not Found");
+    }
+
+    //-- Tipo mime por defecto: html
+    var mime = "text/html"
+
+    //-- Es una imagen
+    if (['png', 'jpg'].includes(tipo)) {
+      console.log("IMAGEN!!!!!")
+      mime = "image/" + tipo
+    }
+
+    //-- Es un css
+    if (tipo == "css")
+      mime = "text/css"
+
+    //-- Generar el mensaje de respuesta
+    res.writeHead(200, {'Content-Type': mime});
+    res.write(data);
+    res.end();
   });
+
 }).listen(8080);
