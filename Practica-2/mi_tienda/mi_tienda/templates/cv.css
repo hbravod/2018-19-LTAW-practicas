@@ -1,0 +1,111 @@
+body {
+  background-color: #80CCFF;
+}
+.cajita1{
+  position: top;
+  width: 100%;
+  height: 30%;
+  background-color: #0B3269;
+  position: absolute;
+  align-items: baseline;
+  border-top-width: 10px;
+  border-right-width: 1em;
+  border-bottom-width: thick;
+  border-left-width: thin;
+  border-radius: 10px;
+}
+.cajita2{
+  position: left;
+  width: 250px;
+  height: auto;
+  background-color: #DC143C;
+  position: absolute;
+  align-items: baseline;
+  border-top-width: 20px;
+  border-right-width: 1em;
+  border-bottom-width: thick;
+  border-left-width: thin;
+  border-radius: 10px;
+}
+.cajita3{
+  position: left;
+  width: 250px;
+  height: auto;
+  background-color: #6BB210;
+  position: absolute;
+  align-items: baseline;
+  border-top-width: 20px;
+  border-right-width: 1em;
+  border-bottom-width: thick;
+  border-left-width: thin;
+  border-radius: 10px;
+}
+.cajita4{
+  position: left;
+  width: 250px;
+  height: auto;
+  background-color:  #1083b2;
+  position: absolute;
+  align-items: baseline;
+  border-top-width: 20px;
+  border-right-width: 1em;
+  border-bottom-width: thick;
+  border-left-width: thin;
+  border-radius: 10px;
+}
+.cajita5{
+  position: left;
+  width: 250px;
+  height: auto;
+  background-color: #E57E0E;
+  position: absolute;
+  align-items: baseline;
+  border-top-width: 20px;
+  border-right-width: 1em;
+  border-bottom-width: thick;
+  border-left-width: thin;
+  border-radius: 10px;
+}
+.cajita6{
+  position: center;
+  width: 85%;
+  height: auto;
+  background-color: #FFFFFF;
+  float: right;
+  border: 1.5px solid grey;
+  border-radius: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-left: 40%;
+  margin-bottom: 10px;
+}
+
+.picture{
+  position: relative;
+  top : 5px;
+  left: 5px;
+  width: 150px;
+  height: 170px;
+}
+h1{
+  color: white;
+  font-family: Comic;
+  font-size: 150%;
+  color: white;
+}
+h2{
+  color: white;
+  font-family: Comic sans-serif;
+  font-size: 150%;
+  float: right;
+}
+h3{
+  align-items: center;
+  font-size: 150%;
+  color: white;
+}
+h4{
+  color: black;
+  font-family: Comic sans-serif;
+  font-size: 150%;
+  float: center;

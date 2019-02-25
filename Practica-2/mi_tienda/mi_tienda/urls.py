@@ -19,9 +19,13 @@ from mi_tienda.views import mi_producto
 from mi_tienda.views import saludo
 from mi_tienda.views import hora_actual
 from mi_tienda.views import cv
+from mi_tienda.views import cv_render
+from mi_tienda.views import index
 
 urlpatterns = [
+    url(r'^main/', index),
     url(r'^cv/', cv),
+    url(r'^curriculum/', cv_render),
     url(r'^hora/', hora_actual),
     url(r'^saludo/', saludo),
     url(r'^hola/', mi_funcion),

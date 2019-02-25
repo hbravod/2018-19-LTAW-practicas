@@ -1,6 +1,8 @@
 from django.http import HttpResponse
 from django.template import Template, Context
 from datetime import datetime
+#from django.template.loader import get_template
+from django.shortcuts import render
 
 def mi_funcion (request):
     html = "Hola! Mi primera URL!!"
@@ -36,6 +38,10 @@ def saludo(request):
     html = t.render(c)
     return HttpResponse(html)
 
+def index(request):
+    now = datetime.now()
+    return render(request, 'test.html', {'user': 'Hugo', 'hora': now})
+
 def hora_actual(request):
     now = datetime.now()
     fp = open('/home/alumnos/hbravod/github/2018-19-LTAW-practicas/Practica-2/mi_tienda/mi_tienda/hora.html')
@@ -52,3 +58,6 @@ def cv(request):
     c = Context({' '})
     html = t.render(c)
     return HttpResponse(html)
+
+def cv_render(request):
+    return render(request, 'CV.html', {'user': 'Hugo'})
