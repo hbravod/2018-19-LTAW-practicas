@@ -20,7 +20,7 @@ http.createServer((req, res) => {
   var filename = ""
 
   if (q.pathname == "/")
-    filename += "/CV.html"
+    filename += "/tienda.html"
   else {
     filename = q.pathname
   }
