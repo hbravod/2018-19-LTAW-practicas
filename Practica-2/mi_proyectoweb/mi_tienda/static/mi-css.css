@@ -1,11 +1,13 @@
-body{
-  background-color: lightblue;
+body {
+    background-color: lightblue;
 }
 
-.texto{
-  text-align: center;
+.texto {
+    text-align: center;
 }
 
-.gif{
-   margin-left: auto;
+.imag {
+    position: center;
+    width: 480px;
+    height: 360px;
 }

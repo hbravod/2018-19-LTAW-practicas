@@ -12,8 +12,8 @@ from mi_tienda.models import Fantasia
 def home_view (request):
     return render(request, "index.html", {})
 
-def libros (request):
-    return render(request, "libros.html", {})
+def libros_negra (request):
+    return render(request, "libros-negra.html", {})
 
 def list(request):
     objects = NovelaNegra.objects.all()
