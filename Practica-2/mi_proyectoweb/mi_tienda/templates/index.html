@@ -1,17 +1,17 @@
 {% load staticfiles %}
-
 <!DOCTYPE html>
 <html lang="es" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>MI TIENDA</title>
+    <title>La Tiendesita</title>
     <link rel="stylesheet" href="{% static 'mi-css.css'%}">
-     <script src="{% static 'mi-js.js' %}"></script>
   </head>
+  
   <body onload="main();">
-    <p>BIENVENIDO A MI TIENDA con estilo y js</p>
-    <img src="/static/giphy.gif" alt="NOPE" id="logo">
+    <div class="texto">
+      <p>BIENVENIDO A MI TIENDESITA</p>
+    </div>
     <br>
-    <button type="button" id="boton">Click me</button>
+    <button type="button" onclick="window.location.href='/libros'"><img class="gif" id="boton" src="{% static "giphy.gif" %}" alt="gif"></button>
   </body>
 </html>
