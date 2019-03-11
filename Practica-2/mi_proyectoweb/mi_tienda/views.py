@@ -15,6 +15,12 @@ def home_view (request):
 def libros_negra (request):
     return render(request, "libros-negra.html", {})
 
+def libros_misterio (request):
+    return render(request, "libros-misterio.html", {})
+
+def libros_fantasia (request):
+    return render(request, "libros-fantasia.html", {})
+
 def list(request):
     objects = NovelaNegra.objects.all()
     html = "<p>Listado de Novelas Negras:</p>"
