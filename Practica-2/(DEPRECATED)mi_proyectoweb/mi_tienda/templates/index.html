@@ -1,0 +1,34 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <title>La Tiendesita</title>
+    <link rel="stylesheet" href="{% static 'mi-css.css'%}">
+</head>
+
+<body onload="main();">
+    <div class="texto">
+        <p>BIENVENIDO A LA LIBRERÍA</p>
+    </div>
+    <br>
+    <table style="width:100%">
+        <tr>
+            <th>
+                <button type="button" onclick="window.location.href='/libros_misterio'"><img class="imag" id="boton" src="{% static "novela-misterio.jpg" %}" alt="gif"></button>
+                <div class="genero">
+                    <p>Librería Novela de Misterio</p>
+                </div>
+            </th>
+            <th>
+                <button type="button" onclick="window.location.href='/libros_fantasia'"><img class="imag" id="boton" src="{% static "novela-fantasia.jpg" %}" alt="gif"></button>
+                <div class="genero">
+                    <p>Librería Novela Fantástica</p>
+                </div>
+            </th>
+        </tr>
+
+</body>
+
+</html>
