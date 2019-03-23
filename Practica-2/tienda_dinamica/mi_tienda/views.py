@@ -13,13 +13,16 @@ def home_view (request):
     return render(request, "index.html", {})
 
 def libros_negra (request):
-    return render(request, "libros-negra.html", {})
+    libro1 = Negra.objects.all()
+    return render(request, "products.html", {'products': libro1})
 
 def libros_misterio (request):
-    return render(request, "libros-misterio.html", {})
+    libro2 = Misterio.objects.all()
+    return render(request, "products.html", {'products': libro2})
 
 def libros_fantasia (request):
-    return render(request, "libros-fantasia.html", {})
+    libro3 = Fantasia.objects.all()
+    return render(request, "products.html", {'products': libro3})
 
 def list(request):
     objects = Negra.objects.all()
