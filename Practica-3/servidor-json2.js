@@ -19,7 +19,7 @@ http.createServer((req, res) => {
 
         //-- Pagina principal
         case "/":
-            fs.readFile("./index.html", function(err, data) {
+            fs.readFile("./tienda.html", function(err, data) {
                 //-- Generar el mensaje de respuesta
                 res.writeHead(200, { 'Content-Type': 'text/html' });
                 res.write(data);
