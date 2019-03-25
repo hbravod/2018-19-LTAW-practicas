@@ -8,6 +8,7 @@ class Negra (models.Model):
     name = models.CharField(max_length=200)
     stock = models.IntegerField()
     price = models.FloatField()
+    image = models.CharField(max_length=200, default = '')
 
     def __str__(self):
         return self.name
@@ -16,6 +17,7 @@ class Misterio (models.Model):
     name = models.CharField(max_length=200)
     stock = models.IntegerField()
     price = models.FloatField()
+    image = models.CharField(max_length=200, default = '')
 
     def __str__(self):
         return self.name
@@ -24,6 +26,7 @@ class Fantasia (models.Model):
     name = models.CharField(max_length=200)
     stock = models.IntegerField()
     price = models.FloatField()
+    image = models.CharField(max_length=200, default = '')
 
     def __str__(self):
         return self.name

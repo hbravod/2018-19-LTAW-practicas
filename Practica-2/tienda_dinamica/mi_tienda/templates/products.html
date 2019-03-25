@@ -10,16 +10,18 @@
     <!-- <script src="main.js"></script> -->
 </head>
 <body>
-    <p>Productos</p>
-    <input type="text">
+    <p>Biblioteca</p>
     <br>
     {% for product in products %}
     <div class='products'>
         <tr>
             <td><img class="image" src='{{ product.image }}'></td>
             <td>{{ product.name }}</td>
+            <span>(</span>
             <td>{{ product.stock }}</td>
+            <span>en stock )</span>
             <td>{{ product.price }}</td>
+            <span> €</span>
         </tr>
     </div>
     {% endfor %}
