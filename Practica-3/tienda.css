@@ -1,38 +1,18 @@
-/* id -> # */
-/* etiqueta o clase -> . */
-
-h1{
-  font-family: Comic;
-  font-size: 150%;
+body {
+    background-color: #87CEFA;
 }
 
-body{
-  background-color: #87CEFA
+.texto {
+    text-align: center;
 }
 
-h2{
-  text-align: center;
-  font-family: Comic;
-  font-size: 150%;
+.imag {
+    position: center;
+    width: 480px;
+    height: 360px;
 }
 
-p{
-  text-underline-position: right;
-  padding-left: auto;
-}
-
-.libro1{
-  float: left;
-}
-
-.libro2{
-  float: left;
-}
-
-.libro2{
-  float: left;
-}
-
-.libro3{
-  float: left;
+.image {
+    width: 60px;
+    height: 90px;
 }

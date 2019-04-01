@@ -1,30 +1,42 @@
 <!DOCTYPE html>
 <html lang="es" dir="ltr">
-  <head>
+
+<head>
     <meta charset="utf-8">
     <title>La Tiendesita</title>
-    <link rel="stylesheet" href="mi-css.css">
-  </head>
-  <body>
+    <link rel="stylesheet" type="text/css" href="tienda.css">
+</head>
 
-    <h2>Librería de Hugo</h2>
-    <ul>
-      <div class="libro1">
-        <img src="https://static.megustaleer.com/images/libros_200_x/EAL98546.jpg" alt="Quirke 1">
-      </div>
-      
-      <span><h1>Precio: 19.90€</h1></span>
-      <div class="libro2">
-        <img src="https://static.megustaleer.com/images/libros_200_x/EAL90540.jpg" alt="Quirke 2">
-      </div>
+<body>
+    <div class="texto">
+        <p>BIENVENIDO A LA LIBRERÍA</p>
+    </div>
+    <br>
+    <table style="width:100%">
+        <tr>
+            <th>
+                <img src="images/novela-negra.jpg" alt="negra" class="imag"
+                    onclick="window.location.href='/negra.html'">                    
+                <div class="genero">
+                    <p>Librería Novela Negra</p>
+                </div>
+            </th>
+            <th>
+                <img src="/images/novela-misterio.jpg" alt="negra" class="imag"
+                onclick="window.location.href='/misterio.html'">                 
+                <div class="genero">
+                    <p>Librería Novela de Misterio</p>
+                </div>
+            </th>
+            <th>
+                <img src="/images/novela-fantasia.jpg" alt="negra" class="imag"
+                onclick="window.location.href='/fantasia.html'">                 
+                <div class="genero">
+                    <p>Librería Novela Fantástica</p>
+                </div>
+            </th>
+        </tr>
 
-      <h1>Precio: 19.90€</h1>
-      <div class="libro3">
-        <img src="https://static.megustaleer.com/images/libros_200_x/EAL10494.jpg" alt="Quirke 3">
-      </div>
+</body>
 
-      <h1>Precio: 19.50€</h1>
-    </ul>
-
-  </body>
 </html>

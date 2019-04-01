@@ -1,71 +1,63 @@
-var http = require('http');
-var url = require('url');
-var fs = require('fs');
+const http = require('http');
+const url = require('url');
+const fs = require('fs');
 
-const PORT = 8080
-
-console.log("Arrancando servidor en puerto " + PORT)
+console.log("Arrancando servidor...")
 
 //-- Configurar y lanzar el servidor. Por cada peticion recibida
 //-- se imprime un mensaje en la consola
 http.createServer((req, res) => {
+  console.log("---> Peticion recibida")
+  console.log("Recurso solicitado (URL): " + req.url)
+  var q = url.parse(req.url, true);
+  console.log("URL parseada: ")
+  console.log("Host: " + q.host)
+  console.log("pathname:" + q.pathname)
 
-    //-- Mostrar en la consola el recurso al que se accede
-    var q = url.parse(req.url, true);
-    console.log("Petición: " + q.pathname)
+  //-- Obtener el fichero. Si es "/" se toma index.html
+  //-- Poner el "." delante para que sean un fichero del directorio actual
 
-    //-- Segun el recurso al que se accede
-    switch (q.pathname) {
+  var filename = ""
 
-        //-- Pagina principal
-        case "/":
-            fs.readFile("./tienda.html", function(err, data) {
-                //-- Generar el mensaje de respuesta
-                res.writeHead(200, { 'Content-Type': 'text/html' });
-                res.write(data);
-                res.end();
-                return
-            });
-            break;
+  if (q.pathname == "/")
+    filename += "/tienda.html"
+  else {
+    filename = q.pathname
+  }
 
-            //-- Fichero js cliente
-        case "/client-2.js":
-            fs.readFile("./client-2.js", function(err, data) {
-                //-- Generar el mensaje de respuesta
-                res.writeHead(200, { 'Content-Type': 'application/javascript' });
-                res.write(data);
-                res.end();
-                return
-            });
-            break;
+  //-- Obtener el tipo de fichero segun la extension
+  tipo = filename.split(".")[1]
 
-            //-- Acceso al recurso JSON
-        case "/myquery":
+  //-- Obtener el nombre del fichero a partir del recurso solicitado
+  //-- Se añade un . delante
+  filename = "." + filename
 
-            //-- Contenido en formato JSON
-            //-- Es lo que se va a devolver en la petición
-            content = `
-      {
-        "productos": ["FPGA", "RISC-V", "74ls00"]
-      }
-      `
-                //-- Generar el mensaje de respuesta
-                //-- IMPORTANTE! Hay que indicar que se trata de un objeto JSON
-                //-- en la cabecera Content-Type
-            res.setHeader('Content-Type', 'application/json')
-            res.write(content);
-            res.end();
-            return
-            break
+  console.log("Filename: " + filename)
+  console.log("Tipo: " + tipo)
 
-            //-- Se intenta acceder a un recurso que no existe
-        default:
-            content = "Error";
-            res.statusCode = 404;
-            //-- Generar el mensaje de respuesta
-            res.setHeader('Content-Type', 'text/html')
-            res.write(content);
-            res.end();
+  fs.readFile(filename, function(err, data) {
+    if (err) {
+      res.writeHead(404, {'Content-Type': 'text/html'});
+      return res.end("404 Not Found");
     }
 
-}).listen(PORT);
+    //-- Tipo mime por defecto: html
+    var mime = "text/html"
+
+    //-- Es una imagen
+    if (['png', 'jpg'].includes(tipo)) {
+      console.log("IMAGEN!!!!!")
+      mime = "image/" + tipo
+    }
+
+    //-- Es un css
+    if (tipo == "css")
+      mime = "text/css"
+
+    //-- Generar el mensaje de respuesta
+    res.writeHead(200, {'Content-Type': mime});
+    res.write(data);
+    res.end();
+  });
+
+}).listen(8090);
