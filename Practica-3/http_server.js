@@ -46,7 +46,7 @@ http.createServer((req, res) => {
 
     //-- Es una imagen
     if (['png', 'jpg'].includes(tipo)) {
-      console.log("IMAGEN!!!!!")
+      console.log("Imagen")
       mime = "image/" + tipo
     }
 

@@ -20,3 +20,8 @@ p{
   text-underline-position: right;
   padding-left: auto;
 }
+
+.img {
+  width: 200px;
+  height: 315px;
+}
