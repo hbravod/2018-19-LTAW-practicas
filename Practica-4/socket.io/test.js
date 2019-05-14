@@ -26,7 +26,7 @@ http.listen(3000, function(){
 io.on('connection', function(socket){
   console.log('--> Usuario conectado!');
 
-  nuevo_usuario = usuarios + 1;
+  usuarios += 1;
 
   //--Saludo al nuevo usuario
   msg = 'sup bru';
@@ -38,7 +38,9 @@ io.on('connection', function(socket){
   //-- Detectar si el usuario se ha desconectado
   socket.on('disconnect', function(){
   console.log('--> Usuario Desconectado');
-  usuarios = usuarios - 1;
+  usuarios -= 1;
+  msg = 'Bro huyó del hood'
+  io.emit('new_message', msg)
   });
 
   //-- Detectar si se ha recibido un mensaje del cliente
@@ -48,29 +50,29 @@ io.on('connection', function(socket){
       socket.emit('new_message', msg);
     }
     else if (msg == '/list') {
-      msg = 'Número de usuarios conectados: ' + user.toString();
+      msg = 'Número de usuarios conectados: ' + usuarios.toString();
       socket.emit('new_message', msg);
-    } else if (msg == '/hello') {
-      msg = 'Hello, whats up! ';
-      socket.emit('new_message', msg);
-    } else if (msg == '/date') {
-      let f = new Date();
-      // msg = 'La fecha actual es: ' + f.getDate() + "/" + (f.getMonth() + 1) + "/" + f.getFullYear();
-      let meses = new Array ("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
-      let diasSemana = new Array("Domingo","Lunes","Martes","Miércoles","Jueves","Viernes","Sábado");
 
-      msg = 'La fecha actual es: ' + diasSemana[f.getDay()] + ", " + f.getDate() + " de " + meses[f.getMonth()] + " de " + f.getFullYear();
+    } else if (msg == '/hello') {
+      msg = 'Yo, ma man! ';
       socket.emit('new_message', msg);
+
+    } else if (msg == '/date') {
+      var f = new Date();
+      // msg = 'La fecha actual es: ' + f.getDate() + "/" + (f.getMonth() + 1) + "/" + f.getFullYear();
+      var meses = new Array ("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
+      var dias = new Array("Domingo","Lunes","Martes","Miércoles","Jueves","Viernes","Sábado");
+
+      msg = 'La fecha actual es: ' + dias[f.getDay()] + ", " + f.getDate() + " de " + meses[f.getMonth()] + " de " + f.getFullYear();
+      socket.emit('new_message', msg);
+
     }else {
-      //Emitir mensaje todos clientes conectados
+      //Emitir mensaje a todos clientes conectados
       io.emit('new_message', msg);
     }
 
     //-- Notificarlo en la consola del servidor
     console.log("Mensaje recibido: " + msg)
-
-      //-- Emitir un mensaje a todos los clientes conectados
-      io.emit('new_message', msg);
   });
 
 });
