@@ -1,34 +1,25 @@
-const electron = require('electron')
-
-console.log("Arrancando electron...")
-
 var app = require('express')();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
 
 var usuarios = 0;
 
-//-- Punto de entrada. En cuanto electron está listo,
-//-- ejecuta esta función
-electron.app.on('ready', ()=>{
-  console.log("Evento Ready!")
+//--Servir la pagina principal
+app.get('/', function(req, res){
+  res.sendFile(__dirname + '/index.html');
+  console.log("Página principal: /")
+});
 
-  // Crear la ventana principal de nuestra Interfaz Gráfica
-  win = new electron.BrowserWindow({
-    width: 720,
-    height: 576
-  })
+//-- Servir el cliente javascript
+app.get('/chat-client.js', function(req, res){
+  res.sendFile(__dirname + '/chat-client.js');
+  console.log("Fichero js o cliente solicituado")
+});
 
-
-  //-- En la parte superior se nos ha creado el menu
-  //-- por defecto
-  //-- Si lo queremos quitar, hay que añadir esta línea
-  //win.setMenuBarVisibility(false)
-
-  //-- Cargar la interfaz gráfica, que se encuentra en el
-  //-- fichero index.html
-
-  win.loadFile('index.html')
+//-- Lanzar el servidor
+http.listen(3000, function(){
+  console.log('listening on *:3000');
+});
 
 //-- Evento: Nueva conexion recibida
 //-- Un nuevo cliente se ha conectado!
@@ -41,14 +32,14 @@ io.on('connection', function(socket){
   msg = 'sup bru';
   socket.emit('new_message', msg);
   //-- Enviar a todos los usuarios salvo al nuevo
-  msg = 'New homie in da hood';
+  msg = 'new homie in da hood';
   socket.broadcast.emit('new_message', msg);
 
   //-- Detectar si el usuario se ha desconectado
   socket.on('disconnect', function(){
   console.log('--> Usuario Desconectado');
   usuarios -= 1;
-  msg = 'Un bro huyó del hood'
+  msg = 'Bro huyó del hood'
   io.emit('new_message', msg)
   });
 
@@ -67,10 +58,10 @@ io.on('connection', function(socket){
       socket.emit('new_message', msg);
 
     } else if (msg == '/date') {
-      let f = new Date();
+      var f = new Date();
       // msg = 'La fecha actual es: ' + f.getDate() + "/" + (f.getMonth() + 1) + "/" + f.getFullYear();
-      let meses = new Array ("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
-      let dias = new Array("Domingo","Lunes","Martes","Miércoles","Jueves","Viernes","Sábado");
+      var meses = new Array ("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
+      var dias = new Array("Domingo","Lunes","Martes","Miércoles","Jueves","Viernes","Sábado");
 
       msg = 'La fecha actual es: ' + dias[f.getDay()] + ", " + f.getDate() + " de " + meses[f.getMonth()] + " de " + f.getFullYear();
       socket.emit('new_message', msg);
@@ -85,5 +76,3 @@ io.on('connection', function(socket){
   });
 
 });
-
-})

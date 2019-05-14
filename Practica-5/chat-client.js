@@ -24,6 +24,7 @@ function main(){
 
     //-- Enviar el mensaje, con el evento "new_message"
     socket.emit('new_message', msg.value);
+    document.getElementById('msg').value = '';
 
     //-- Lo notificamos en la consola del navegador
     console.log("Mensaje emitido")
