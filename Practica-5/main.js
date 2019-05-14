@@ -9,8 +9,8 @@ electron.app.on('ready', ()=>{
 
   // Crear la ventana principal de nuestra Interfaz Gráfica
   win = new electron.BrowserWindow({
-    width: 600,
-    height: 400
+    width: 720,
+    height: 576
   })
 
   //-- En la parte superior se nos ha creado el menu
