@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <title>LIBRERÍA</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/mi-css.css">
+    <script src="static/client.js"></script>
+</head>
+
+<body onload="buscar()">
+<header>
+  <b id="title"> LIBRERÍA </b>
+  <i id="user">Bienvenido #{user}</i>
+</header>
+    <h1> Selecione un género:  </h1>
+    <div class="content">
+      <button id="ingreso" type="button" onclick="window.location.href='/ingreso'">Registro</button><br>
+      <button type="button" onclick="window.location.href='/negra'"><img class="imag" src="/static/novela-negra.jpg" alt="gif">Librería Novela Negra</button>
+      <button type="button" onclick="window.location.href='/misterio'"><img class="imag" src="/static/novela-misterio.jpg" alt="gif">Librería Novela de Misterio</button>
+      <button type="button" onclick="window.location.href='/fantasia'"><img class="imag" src="/static/novela-fantasia.jpg" alt="gif">Librería Novela de Fantasía</button>
+      <button type="button" onclick="carrito()" > <img class="cestita" src="/static/cesta.png" alt="gif"> <i class="fa fa-shopping-cart fa-2x" aria-hidden="true"></i></button>
+    </div>
+
+    <!-- Buscador -->
+    <form id="buscador" action="/search" method="POST">
+      <span class="icon"><i class="fa fa-search"></i></span>
+      <input type="text" list="busc" type="text" name='search' id="key" placeholder="¿Qué buscas?">
+      <input class="button" type="submit" name="submit" value="Buscar">
+      <datalist id="busc"></datalist>
+    </form>
+</body>
+</html>
