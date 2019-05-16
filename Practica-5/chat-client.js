@@ -1,12 +1,12 @@
-const io = require('socket.io-client');
-const socket = io('http://localhost:3000',{transport:['websocket']});
+//-const io = require('socket.io-client');
+const socket = io('http://localhost:3000');
 
 function main(){
     console.log("Hola mundo!!")
 
     //-- Crear un socket.io. Se establece la conexion
     //-- con el servidor
-    var socket = io();
+    var socket = io.connect('http://localhost:3000');
 
      //-- Obtener los elementos de interfaz:
 
