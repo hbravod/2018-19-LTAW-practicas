@@ -1,6 +1,5 @@
 <!-- admin -> user: barak pass: django
 Después de crear models:
-	 importarlo en admin.py
     python manage.py makemigrations
     python manage.py migrate
 -->
