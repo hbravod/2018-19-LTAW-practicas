@@ -1,0 +1,26 @@
+{
+  "name": "server",
+  "description": "Tienda",
+  "keywords": [
+    "ltaw",
+    "test"
+  ],
+  "version": "0.0.1",
+  "author": "Hugo Bravo",
+  "main": "server_tienda.js",
+  "devDependencies": {},
+  "license": "GPL-3.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/myTeachingURJC/2018-19-LTAW.git"
+  },
+  "scripts": {
+    "start": "node server_tienda.js",
+    "test": "node -v"
+  },
+  "dependencies": {
+    "cookie-parser": "^1.4.4",
+    "express": "^4.16.4",
+    "pug": "^2.0.3"
+  }
+}
